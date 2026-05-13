@@ -2,15 +2,18 @@ use anyhow::{Context, Result};
 use directories::ProjectDirs;
 use inquire::{Confirm, Select, Text};
 use serde::{Deserialize, Serialize};
-use std::{fs, path::PathBuf};
+use std::{
+    fs,
+    path::{Path, PathBuf},
+};
 
 // --- Interactive Directory Browser ---
 // Presents the contents of `current` as a Select list.
 // `prompt`      — the question shown above the list.
 // `allow_new`   — when true, surfaces a "+ Create new folder here" option
 //                 so the user can mint a folder that doesn't exist yet.
-fn browse_for_directory(start: &PathBuf, prompt: &str, allow_new: bool) -> Result<PathBuf> {
-    let mut current = start.clone();
+fn browse_for_directory(start: &Path, prompt: &str, allow_new: bool) -> Result<PathBuf> {
+    let mut current = start.to_path_buf();
 
     loop {
         let mut entries: Vec<PathBuf> = fs::read_dir(&current)
@@ -392,9 +395,11 @@ fn run_onboarding(config_dir: &std::path::Path, config_path: &std::path::Path) -
     );
 
     // ── Save ─────────────────────────────────────────────────────────────────
-    let mut config = Config::default();
-    config.obsidian_vault = vault_path;
-    config.papers_dir = papers_dir.trim_matches('/').to_string();
+    let config = Config {
+        obsidian_vault: vault_path,
+        papers_dir: papers_dir.trim_matches('/').to_string(),
+        ..Config::default()
+    };
 
     fs::create_dir_all(config_dir)?;
     init_config_templates(config_dir)?;

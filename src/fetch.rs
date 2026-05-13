@@ -127,7 +127,7 @@ fn parse_atom(xml: &str) -> Result<Vec<Paper>> {
                     && n.tag_name().namespace() == Some(ATOM_NS)
             })
             .filter_map(|author_node| child_text(&author_node, "name", ATOM_NS))
-            .map(|s| normalize_whitespace(s))
+            .map(normalize_whitespace)
             .collect();
 
         papers.push(Paper {
