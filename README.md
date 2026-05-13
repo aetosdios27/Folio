@@ -20,7 +20,21 @@
 
 ## Installation
 
-Requires the [Rust toolchain](https://rustup.rs) and an [Obsidian](https://obsidian.md) vault.
+Requires an [Obsidian](https://obsidian.md) vault.
+
+**Option A — Pre-built binary (no Rust needed)**
+
+Download the latest binary for your platform from [Releases](https://github.com/aetos-dev/folio/releases), extract, and move it to somewhere on your `$PATH`:
+
+```sh
+# Example for Linux x86_64
+curl -L https://github.com/aetos-dev/folio/releases/latest/download/folio-v0.1.0-x86_64-unknown-linux-gnu.tar.gz | tar xz
+sudo mv folio-v0.1.0-x86_64-unknown-linux-gnu/folio /usr/local/bin/
+```
+
+**Option B — Build from source**
+
+Requires the [Rust toolchain](https://rustup.rs).
 
 ```sh
 cargo install --git https://github.com/aetos-dev/folio
