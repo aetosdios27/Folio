@@ -1,12 +1,13 @@
 [package]
-name = "folio"
-version = "0.1.0"
+name = "folio-tui"
+version = "0.2.0"
 edition = "2021"
 description = "A terminal UI for searching ArXiv and importing papers into Obsidian"
 license = "MIT"
 repository = "https://github.com/aetos-dev/folio"
 keywords = ["arxiv", "obsidian", "papers", "tui", "research"]
 categories = ["command-line-utilities"]
+readme = "README.md"
 
 [dependencies]
 # Async & Networking
@@ -33,3 +34,7 @@ roxmltree = "0.19"
 tera = "1.19"
 chrono = "0.4"
 anyhow = "1.0"
+
+[[bin]]
+name = "folio"
+path = "src/main.rs"

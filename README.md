@@ -33,7 +33,7 @@ Folio requires an [Obsidian vault](https://obsidian.md?utm_source=chatgpt.com).
 Requires the [Rust toolchain](https://rustup.rs?utm_source=chatgpt.com).
 
 ```bash
-cargo install folio
+cargo install folio-tui
 ```
 
 ---
